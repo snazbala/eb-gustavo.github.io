@@ -10,6 +10,7 @@ function getClientId() {
       frameWindow.postMessage(clientId, 'https://www.eventbrite.com');
       return clientId;
     });
+}
 
 function showWidget(eventId, modal, affiliateCode, clientId) {
     var options = {
