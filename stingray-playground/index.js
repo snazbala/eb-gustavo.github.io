@@ -4,7 +4,8 @@ function showWidget(eventId, modal, affiliateCode) {
         eventId: eventId,
         onOrderComplete: function() {
             console.log('Order Completed');
-        }
+        },
+        googleAnalyticsClientId: '1234567',
     };
 
     if (affiliateCode) {
