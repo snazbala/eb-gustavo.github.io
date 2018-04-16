@@ -13,8 +13,14 @@
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            window.addEventListener('message', function(event) {
+              // Ignores messages from untrusted domains.
+              if (event.origin != 'https://www.eventbrite.com') return;
 
-            ga('create', 'UA-31671209-2', 'auto');
+              ga('create', 'UA-31671209-2', 'auto', {
+                clientId: event.data
+              });
+            });
             ga('send', 'pageview');
         </script>
         <!-- End Google Analytics -->
