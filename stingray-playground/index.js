@@ -8,16 +8,17 @@ function getClientId() {
 
       // Sends the client ID to the window inside the destination frame.
       frameWindow.postMessage(clientId, 'https://www.eventbrite.com');
+      return clientId;
     });
 
-function showWidget(eventId, modal, affiliateCode) {
+function showWidget(eventId, modal, affiliateCode, clientId) {
     var options = {
         widgetType: 'checkout',
         eventId: eventId,
         onOrderComplete: function() {
             console.log('Order Completed');
         },
-        googleAnalyticsClientId: '1234567',
+        googleAnalyticsClientId: clientId,
     };
 
     if (affiliateCode) {
@@ -46,8 +47,8 @@ function buildWidgetContainer(eventId, modal, affiliateCode) {
         checkoutWidget.appendChild(button);
         button.className = 'btn primary w-button';
     }
-
-    showWidget(eventId, modal, affiliateCode);
+    var clientId = getClientId();
+    showWidget(eventId, modal, affiliateCode, clientId);
 }
 
 function decode(value, replaceRegex) {
