@@ -1,3 +1,15 @@
+function getClientId() {
+    ga(function(tracker) {
+      // Gets the client ID of the default tracker.
+      var clientId = tracker.get('clientId');
+
+      // Gets a reference to the window object of the destionation iframe.
+      var frameWindow = document.getElementById('eventbrite-widget-modal-45181383735').contentWindow;
+
+      // Sends the client ID to the window inside the destination frame.
+      frameWindow.postMessage(clientId, 'https://www.eventbrite.com');
+    });
+
 function showWidget(eventId, modal, affiliateCode) {
     var options = {
         widgetType: 'checkout',
